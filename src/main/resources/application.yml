@@ -1,0 +1,9 @@
+spring:
+  rabbitmq:
+    host: rmq3
+    port: 5672
+    username: guest
+    password: guest
+    exchange: vote.exchange
+    queue: vote.queue
+    routingkey: vote.routingkey
