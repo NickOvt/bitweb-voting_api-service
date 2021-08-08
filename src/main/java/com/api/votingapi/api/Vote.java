@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
+import java.time.Instant;
+
+@CrossOrigin(origins = "http://localhost:3000") // CORS
 @RequestMapping("/api/vote")
 @RestController
 public class Vote {
@@ -25,7 +27,9 @@ public class Vote {
 
     @PostMapping
     public ResponseEntity<?> doVote(@RequestBody Choice choice) {
-        System.out.println("Voted for: " + "'" +  choice.getChoice() + "'");
+        Instant instant = Instant.now();
+        long timeStampMillis = instant.toEpochMilli();
+        System.out.println("Voted for: " + "'" +  choice.getChoice() + "'" + " timestamp -> " + timeStampMillis);
         choiceServiceMQ.send(choice);
         return ResponseEntity.ok(new VoteResponse("Vote successful"));
     }

@@ -23,7 +23,6 @@ public class ChoiceServiceMQ {
     private String routingkey;
 
     public void send(Choice choice) {
-        System.out.println("RoutingKey:" + routingkey);
         rabbitTemplate.convertAndSend(exchange, routingkey, choice);
     }
 }
