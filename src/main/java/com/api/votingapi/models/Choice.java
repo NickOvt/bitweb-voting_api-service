@@ -13,10 +13,11 @@ public class Choice {
     }
 
     public String getChoice() {
-        return choice;
+        return this.choice;
     }
 
     public void setChoice(String choice) {
         this.choice = choice;
     }
+    
 }
